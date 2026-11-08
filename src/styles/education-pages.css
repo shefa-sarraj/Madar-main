@@ -1,0 +1,462 @@
+/* Shared visual language for the three education workflows in Phase 3. */
+.madar-students,
+.madar-student-wizard,
+.madar-admissions,
+.madar-student-profile {
+  --edu-ink: #173a5e;
+  --edu-muted: #566c80;
+  --edu-line: #dfe6eb;
+  --edu-gold: #c7a361;
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+  color: var(--edu-ink);
+}
+
+.madar-students > :not([hidden]) ~ :not([hidden]),
+.madar-student-wizard > :not([hidden]) ~ :not([hidden]),
+.madar-admissions > :not([hidden]) ~ :not([hidden]),
+.madar-student-profile > :not([hidden]) ~ :not([hidden]) {
+  margin-block-start: 0;
+}
+
+.madar-students > :first-child,
+.madar-student-wizard > :first-child,
+.madar-admissions > :first-child,
+.madar-student-profile > :first-child {
+  margin-bottom: 0.125rem;
+  padding-bottom: 1rem;
+  border-color: #e5e0d7;
+}
+
+.madar-students > :first-child h1,
+.madar-student-wizard > :first-child h1,
+.madar-admissions > :first-child h1,
+.madar-student-profile > :first-child h1 {
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  color: var(--edu-ink);
+}
+
+.madar-students > :first-child p,
+.madar-student-wizard > :first-child p,
+.madar-admissions > :first-child p,
+.madar-student-profile > :first-child p {
+  color: var(--edu-muted);
+  line-height: 1.8;
+}
+
+.madar-students > :first-child [data-slot="button"],
+.madar-student-wizard > :first-child [data-slot="button"],
+.madar-admissions > :first-child [data-slot="button"],
+.madar-student-profile > :first-child [data-slot="button"] {
+  min-height: 2.625rem;
+}
+
+.madar-students > :nth-child(2),
+.madar-admissions > :nth-child(2),
+.madar-student-profile > :nth-child(2) {
+  padding: 0.875rem;
+  border: 1px solid var(--edu-line);
+  border-radius: 0.875rem;
+  background: #fff;
+  box-shadow: 0 5px 20px -14px rgb(18 59 96 / 20%);
+}
+
+.madar-students > :nth-child(2) input,
+.madar-students > :nth-child(2) button,
+.madar-students > #students-secondary-filters button,
+.madar-students > #students-secondary-filters [role="combobox"],
+.madar-admissions > :nth-child(2) input,
+.madar-admissions > :nth-child(2) button,
+.madar-admissions > :nth-child(2) [role="combobox"] {
+  min-height: 2.625rem;
+}
+
+.madar-students [data-slot="button"]:focus-visible,
+.madar-students input:focus-visible,
+.madar-students [role="combobox"]:focus-visible,
+.madar-student-wizard [data-slot="button"]:focus-visible,
+.madar-student-wizard input:focus-visible,
+.madar-student-wizard textarea:focus-visible,
+.madar-student-wizard [role="combobox"]:focus-visible,
+.madar-admissions [data-slot="button"]:focus-visible,
+.madar-admissions input:focus-visible,
+.madar-admissions [role="combobox"]:focus-visible {
+  outline: 2px solid var(--madar-focus);
+  outline-offset: 2px;
+}
+
+.madar-student-profile [data-slot="button"]:focus-visible,
+.madar-student-profile [role="tab"]:focus-visible {
+  outline: 2px solid var(--madar-focus);
+  outline-offset: 2px;
+}
+
+/* Student details and enrollment tabs share the same calm, readable system. */
+.madar-student-profile > a:first-child {
+  width: fit-content;
+  min-height: 2.25rem;
+  padding-inline: 0.125rem;
+  color: #49657d;
+}
+
+.madar-student-profile > a:first-child:hover {
+  color: var(--edu-ink);
+}
+
+.madar-student-profile > :nth-child(2) {
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-color: var(--edu-line);
+  box-shadow: 0 5px 20px -14px rgb(18 59 96 / 24%);
+}
+
+.madar-student-profile > :nth-child(2) h1 {
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.madar-student-profile > :nth-child(2) p {
+  color: var(--edu-muted);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.madar-student-profile [role="tablist"] {
+  width: fit-content;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  overflow-x: auto;
+  border: 1px solid var(--edu-line);
+  background: #f3f6f8;
+  scrollbar-width: thin;
+}
+
+.madar-student-profile [role="tab"] {
+  min-height: 2.5rem;
+  padding-inline: 0.875rem;
+  color: #50687d;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.madar-student-profile [role="tab"][data-state="active"] {
+  color: var(--edu-ink);
+  box-shadow: 0 1px 3px rgb(18 59 96 / 10%);
+}
+
+.madar-student-profile [role="tabpanel"] {
+  min-width: 0;
+}
+
+.madar-student-profile [role="tabpanel"] > section,
+.madar-student-profile [role="tabpanel"] > div > section {
+  min-width: 0;
+  padding: 1.125rem;
+  border-color: var(--edu-line);
+  border-radius: 0.875rem;
+  box-shadow: 0 5px 18px -15px rgb(18 59 96 / 28%);
+}
+
+.madar-student-profile [role="tabpanel"] h3 {
+  color: var(--edu-ink);
+  font-size: 0.9375rem;
+}
+
+.madar-student-profile [role="tabpanel"] dt {
+  color: #536b80;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.madar-student-profile [role="tabpanel"] dd {
+  color: #263f56;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.madar-student-profile table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.madar-student-profile thead tr {
+  background: #f3f6f8;
+}
+
+.madar-student-profile thead th {
+  min-height: 3rem;
+  color: #4c6378;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.madar-student-profile tbody td {
+  padding-block: 0.75rem;
+  color: #304b63;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.madar-students > :nth-child(2) input::placeholder,
+.madar-admissions > :nth-child(2) input::placeholder {
+  color: #5d7183;
+  opacity: 1;
+}
+
+.madar-students > :nth-child(3) > div {
+  gap: 0.5rem;
+  padding: 0 0 0.875rem;
+  border-color: var(--edu-line);
+}
+
+.madar-students table,
+.madar-admissions table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.madar-students thead tr,
+.madar-admissions thead tr {
+  background: #f3f6f8;
+}
+
+.madar-students thead th,
+.madar-admissions thead th {
+  height: 3rem;
+  color: #4c6378;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.madar-students tbody tr,
+.madar-admissions tbody tr {
+  transition: background-color 140ms ease;
+}
+
+.madar-students tbody tr:hover,
+.madar-admissions tbody tr:hover {
+  background: #f8fafb;
+}
+
+.madar-students tbody td,
+.madar-admissions tbody td {
+  min-height: 3.75rem;
+  padding-block: 0.75rem;
+  color: #304b63;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.madar-students > :nth-child(4) > div,
+.madar-admissions > :nth-child(5) > div {
+  border-color: var(--edu-line);
+  border-radius: 0.875rem;
+  box-shadow: 0 8px 28px -22px rgb(18 59 96 / 36%);
+}
+
+.madar-students > :nth-child(4) > div > div:last-child,
+.madar-admissions > :nth-child(5) > div > div:last-child {
+  padding: 0.875rem 1rem;
+  background: #fbfcfd;
+}
+
+.madar-students [class*="rounded-lg border-dashed"],
+.madar-admissions [class*="rounded-lg border-dashed"] {
+  border-color: #cbd7df;
+  background: #fbfcfd;
+}
+
+/* The four-step student wizard keeps its existing form and navigation logic. */
+.madar-student-wizard > :nth-child(2) ol {
+  gap: 0.625rem;
+}
+
+.madar-student-wizard > :nth-child(2) li {
+  min-width: 0;
+}
+
+.madar-student-wizard > :nth-child(2) button {
+  min-height: 3.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--edu-line);
+  border-bottom: 2px solid #cfd8df;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #4d657a;
+  line-height: 1.55;
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
+
+.madar-student-wizard > :nth-child(2) button[aria-current="step"] {
+  border-color: #cbb277;
+  border-bottom-color: var(--edu-gold);
+  background: #fbf8f1;
+  color: var(--edu-ink);
+}
+
+.madar-student-wizard > :nth-child(2) button span {
+  width: 1.875rem;
+  height: 1.875rem;
+  border: 1px solid #dce4e9;
+  background: #f2f5f7;
+  color: #4f687d;
+}
+
+.madar-student-wizard > :nth-child(2) button[aria-current="step"] span {
+  border-color: var(--edu-ink);
+  background: var(--edu-ink);
+  color: #fff;
+}
+
+.madar-student-wizard fieldset > div > section {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-color: var(--edu-line);
+  border-radius: 1rem;
+  box-shadow: 0 8px 28px -24px rgb(18 59 96 / 40%);
+}
+
+.madar-student-wizard fieldset > div > section > div:first-child {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid #edf0f2;
+}
+
+.madar-student-wizard fieldset > div > section h3 {
+  color: var(--edu-ink);
+  font-size: 1rem;
+}
+
+.madar-student-wizard fieldset label {
+  color: #344f67;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.madar-student-wizard fieldset :is(input, textarea, [role="combobox"]) {
+  min-height: 2.75rem;
+  border-color: #cbd7df;
+  background-color: #fff;
+  font-size: 0.9375rem;
+}
+
+.madar-student-wizard fieldset textarea {
+  min-height: 6rem;
+}
+
+.madar-student-wizard > :last-child {
+  padding: 0.875rem 0;
+  border-color: var(--edu-line);
+  background: transparent;
+}
+
+/* Admission workflow indicators use the existing counts and statuses. */
+.madar-admissions > :nth-child(2) > button {
+  min-height: 6.5rem;
+  padding: 1rem;
+  border-color: var(--edu-line);
+  border-radius: 0.875rem;
+  background: linear-gradient(145deg, #fff, #fafbfd);
+  box-shadow: 0 5px 18px -15px rgb(18 59 96 / 40%);
+}
+
+.madar-admissions > :nth-child(2) > button[aria-pressed="true"] {
+  border-color: #c6a35f;
+  background: linear-gradient(145deg, #fff, #fbf6e9);
+  box-shadow: inset 0 0 0 1px rgb(199 163 97 / 20%);
+}
+
+.madar-admissions > :nth-child(2) > button > div > p {
+  color: var(--edu-ink);
+}
+
+.madar-admissions > :nth-child(2) > button > p {
+  margin-top: 0.75rem;
+  color: var(--edu-ink);
+  font-size: 1.5rem;
+}
+
+.madar-admissions > :nth-child(3) {
+  min-height: 2.5rem;
+}
+
+@media (max-width: 767px) {
+  .madar-students,
+  .madar-student-wizard,
+  .madar-admissions,
+  .madar-student-profile {
+    gap: 0.875rem;
+  }
+
+  .madar-students > :nth-child(2),
+  .madar-admissions > :nth-child(2) {
+    padding: 0.75rem;
+  }
+
+  .madar-students > :nth-child(4) table th:nth-child(3),
+  .madar-students > :nth-child(4) table td:nth-child(3),
+  .madar-students > :nth-child(4) table th:nth-child(4),
+  .madar-students > :nth-child(4) table td:nth-child(4),
+  .madar-students > :nth-child(4) table th:nth-child(5),
+  .madar-students > :nth-child(4) table td:nth-child(5),
+  .madar-students > :nth-child(4) table th:nth-child(6),
+  .madar-students > :nth-child(4) table td:nth-child(6),
+  .madar-students > :nth-child(4) table th:nth-child(8),
+  .madar-students > :nth-child(4) table td:nth-child(8),
+  .madar-admissions > :nth-child(5) table th:nth-child(3),
+  .madar-admissions > :nth-child(5) table td:nth-child(3),
+  .madar-admissions > :nth-child(5) table th:nth-child(4),
+  .madar-admissions > :nth-child(5) table td:nth-child(4),
+  .madar-admissions > :nth-child(5) table th:nth-child(5),
+  .madar-admissions > :nth-child(5) table td:nth-child(5),
+  .madar-admissions > :nth-child(5) table th:nth-child(7),
+  .madar-admissions > :nth-child(5) table td:nth-child(7) {
+    display: none;
+  }
+
+  .madar-student-wizard > :nth-child(2) button {
+    min-height: 3.75rem;
+    align-items: flex-start;
+    font-size: 0.8125rem;
+  }
+
+  .madar-student-wizard fieldset > div > section {
+    padding: 1rem;
+  }
+
+  .madar-student-profile > :nth-child(2) {
+    padding: 0.875rem;
+  }
+
+  .madar-student-profile [role="tablist"] {
+    width: 100%;
+    justify-content: start;
+  }
+
+  .madar-student-profile [role="tab"] {
+    padding-inline: 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  .madar-student-profile [role="tabpanel"] > section,
+  .madar-student-profile [role="tabpanel"] > div > section {
+    padding: 0.875rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .madar-student-wizard > :nth-child(2) ol {
+    gap: 0.375rem;
+  }
+
+  .madar-student-wizard > :nth-child(2) button {
+    gap: 0.375rem;
+    padding: 0.625rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}

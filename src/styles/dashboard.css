@@ -1,0 +1,955 @@
+/* Madar school dashboard. All selectors are local to this route's composition. */
+.madar-dashboard {
+  --dash-ink: var(--madar-navy-deep);
+  --dash-muted: #586f83;
+  --dash-line: #e4e8eb;
+  display: grid;
+  min-width: 0;
+  gap: 0.875rem;
+  color: var(--dash-ink);
+}
+
+.madar-dashboard__welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.125rem 0 1rem;
+  border-bottom: 1px solid #e5e0d7;
+}
+.madar-dashboard__intro {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-width: 0;
+}
+.madar-dashboard__intro > div {
+  min-width: 0;
+}
+.madar-dashboard__brand-arch {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 4.125rem;
+  flex-shrink: 0;
+  border: 1px solid #dfd0ae;
+  border-radius: 48% 48% 0.625rem 0.625rem;
+  background: linear-gradient(#fff, #f7f0e2);
+  box-shadow: inset 0 0 0 4px var(--madar-surface-warm);
+}
+.madar-dashboard__brand-arch img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+.madar-dashboard__eyebrow {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #856d3c;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.madar-dashboard__intro h1 {
+  color: var(--dash-ink);
+  font-size: clamp(1.125rem, 1.65vw, 1.5rem);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.madar-dashboard__intro p {
+  margin-top: 0.125rem;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--dash-muted);
+}
+.madar-dashboard__welcome-tools {
+  display: grid;
+  justify-items: end;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.madar-dashboard__year {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+}
+.madar-dashboard__year > span {
+  background: #f4ecdc;
+  color: #715b2f;
+  border-color: #e5d9bd;
+  font-size: 0.75rem;
+}
+.madar-dashboard__quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.madar-dashboard__quick > span {
+  display: none;
+}
+.madar-dashboard__quick a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.375rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #dce3e8;
+  border-radius: 0.5rem;
+  background: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--madar-navy);
+  transition:
+    background-color 150ms,
+    box-shadow 150ms;
+}
+.madar-dashboard__quick a:hover {
+  background: #f0f4f7;
+  box-shadow: 0 2px 6px rgb(18 59 96 / 6%);
+}
+.madar-dashboard__quick svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 1.6;
+}
+.madar-dashboard__quick svg:last-child {
+  width: 0.75rem;
+  opacity: 0.65;
+}
+.madar-dashboard__quick a:last-child {
+  background: var(--madar-navy);
+  color: #fff;
+  border-color: var(--madar-navy);
+}
+.madar-dashboard__quick a:last-child:hover {
+  background: var(--madar-navy-deep);
+}
+
+.madar-dashboard__kpis {
+  gap: 0;
+  border: 1px solid var(--dash-line);
+  border-radius: 0.875rem;
+  background: #fff;
+  box-shadow: 0 5px 20px -12px rgb(18 59 96 / 14%);
+  overflow: hidden;
+}
+.madar-dashboard__kpi {
+  min-height: 8rem;
+  padding: 0.875rem 1.125rem;
+  border: 0;
+  border-inline-start: 1px solid var(--dash-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.madar-dashboard__kpi:first-child {
+  border-inline-start: 0;
+}
+.madar-dashboard__kpi--primary {
+  background: linear-gradient(115deg, #fff, #f9f4e9);
+  box-shadow: inset 0 3px 0 #c5a467;
+}
+.madar-dashboard__kpi-heading {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 0.625rem;
+}
+.madar-dashboard__kpi-heading p {
+  font-size: 0.75rem;
+  color: var(--dash-muted);
+}
+.madar-dashboard__kpi-heading > span {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: #edf2f6;
+  color: #41617b;
+}
+.madar-dashboard__kpi--primary .madar-dashboard__kpi-heading > span {
+  color: #efd49e;
+  background: var(--madar-navy);
+}
+.madar-dashboard__kpi-heading svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 1.6;
+}
+.madar-dashboard__kpi > p.tnum {
+  margin-top: 0.375rem;
+  color: var(--dash-ink);
+  font-size: clamp(1.5rem, 2.15vw, 2rem);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.madar-dashboard__kpi-context {
+  margin-top: 0.375rem;
+  padding-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: #60758a;
+}
+
+.madar-dashboard__panel {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--dash-line);
+  border-radius: 0.875rem;
+  background: #fff;
+  box-shadow: 0 4px 16px -12px rgb(18 59 96 / 14%);
+}
+.madar-dashboard__panel-heading {
+  align-items: center;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eef0f2;
+}
+.madar-dashboard__panel-title {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: 0.625rem;
+  min-width: 0;
+}
+.madar-dashboard__panel-title h2 {
+  grid-column: 2;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--dash-ink);
+}
+.madar-dashboard__panel-title p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.madar-dashboard__panel-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  grid-row: 1 / 3;
+  align-self: center;
+  border: 1px solid #e7ecf0;
+  border-radius: 0.625rem;
+  background: #f5f8fa;
+  color: #496a82;
+}
+.madar-dashboard__panel-icon svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 1.6;
+}
+.madar-dashboard__panel-heading > a {
+  min-height: 2rem;
+  font-size: 0.75rem;
+}
+.madar-dashboard__empty {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 4rem;
+  border: 1px dashed #dfe5e9;
+  border-radius: 0.625rem;
+  padding: 0.875rem;
+  background: #fafbfc;
+  color: var(--dash-muted);
+}
+.madar-dashboard__empty > svg {
+  width: 1.375rem;
+  height: 1.375rem;
+  color: #8095a6;
+  stroke-width: 1.5;
+}
+.madar-dashboard__empty p {
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+.madar-dashboard__text-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2rem;
+  margin-top: 0.5rem;
+  color: var(--madar-navy);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.madar-dashboard__text-action:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.madar-dashboard__text-action svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.madar-dashboard__attention {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.madar-dashboard__attention > .madar-dashboard__panel-heading {
+  margin-bottom: 0.625rem;
+  border: 0;
+  padding-bottom: 0;
+}
+.madar-dashboard__attention .madar-dashboard__panel-icon {
+  color: #8b6c32;
+  background: #f5ecd9;
+  border-color: #eadfc8;
+}
+.madar-dashboard__attention .madar-dashboard__panel-title p {
+  display: none;
+}
+.madar-dashboard__attention .madar-dashboard__panel-title h2 {
+  align-self: center;
+  grid-row: 1 / 3;
+}
+.madar-dashboard__alerts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.madar-dashboard__alerts > li {
+  min-width: 0;
+}
+.madar-dashboard__alert {
+  display: grid;
+  grid-template-columns: 1.875rem minmax(0, 1fr) 2rem;
+  align-items: start;
+  column-gap: 0.625rem;
+  row-gap: 0.5rem;
+  height: 100%;
+  min-height: 6rem;
+  padding: 0.75rem;
+  border: 1px solid #dee6ec;
+  border-inline-start: 3px solid #8199ab;
+  border-radius: 0.625rem;
+  background: #fff;
+  transition:
+    box-shadow 150ms,
+    border-color 150ms;
+}
+.madar-dashboard__alert:hover {
+  border-color: #9cb0bf;
+  box-shadow: 0 4px 10px rgb(18 59 96 / 7%);
+}
+.madar-dashboard__alert[data-severity="high"] {
+  border-color: #ebceca;
+  border-inline-start-color: #ac5145;
+  background: #fffaf9;
+}
+.madar-dashboard__alert[data-severity="warning"] {
+  border-color: #e8d9b9;
+  border-inline-start-color: #b28a40;
+  background: #fffdf8;
+}
+.madar-dashboard__alert-icon {
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  background: #eff3f6;
+  border-radius: 0.5rem;
+  color: #52738d;
+}
+.madar-dashboard__alert-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+.madar-dashboard__alert-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--dash-ink);
+}
+.madar-dashboard__alert-detail {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--dash-muted);
+}
+.madar-dashboard__alert-count {
+  display: grid;
+  place-items: center;
+  min-height: 2rem;
+  border-radius: 0.5rem;
+  color: #456580;
+  background: #edf2f6;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.madar-dashboard__alert-footer {
+  grid-column: 2 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--madar-navy);
+  font-size: 0.75rem;
+}
+.madar-dashboard__alert-footer > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.madar-dashboard__alert-footer svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.madar-dashboard__severity {
+  display: inline-block;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  background: #edf2f6;
+  color: #52718a;
+  font-size: 0.75rem;
+}
+.madar-dashboard__alert[data-severity="high"]
+  :is(.madar-dashboard__alert-icon, .madar-dashboard__alert-count, .madar-dashboard__severity) {
+  color: #9d483e;
+  background: #f8e9e5;
+}
+.madar-dashboard__alert[data-severity="warning"]
+  :is(.madar-dashboard__alert-icon, .madar-dashboard__alert-count, .madar-dashboard__severity) {
+  color: #846321;
+  background: #f5ecd7;
+}
+.madar-dashboard__notice {
+  padding: 0.625rem 0.875rem;
+  margin-bottom: 0.625rem;
+  border: 1px solid #e5d6b7;
+  border-radius: 0.5rem;
+  background: #fff9ed;
+  color: #795e28;
+  font-size: 0.75rem;
+}
+.madar-dashboard__clear {
+  padding: 0.75rem 1rem;
+  border: 1px solid #dfe8e2;
+  border-radius: 0.625rem;
+  background: #f6faf7;
+}
+.madar-dashboard__clear > svg {
+  color: #4b7b64;
+}
+.madar-dashboard__clear > p {
+  color: #486455;
+  font-size: 0.75rem;
+}
+
+.madar-dashboard__workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(17rem, 1fr);
+  grid-template-areas: "finance attendance" "activity distribution";
+  gap: 0.875rem;
+  align-items: start;
+}
+.madar-dashboard__finance {
+  grid-area: finance;
+}
+.madar-dashboard__attendance {
+  grid-area: attendance;
+}
+.madar-dashboard__distribution {
+  grid-area: distribution;
+}
+.madar-dashboard__activity {
+  grid-area: activity;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+  align-items: start;
+  min-width: 0;
+}
+.madar-dashboard__sparse-finance > p {
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.madar-dashboard__coverage-note {
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+}
+.madar-dashboard__sparse-finance ul {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.madar-dashboard__sparse-finance li {
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.65fr) minmax(0, 2fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #e9edf0;
+  border-radius: 0.625rem;
+  background: #f8fafb;
+}
+.madar-dashboard__sparse-month {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--dash-ink);
+}
+.madar-dashboard__sparse-finance dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+.madar-dashboard__sparse-finance dt {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+}
+.madar-dashboard__sparse-finance dd {
+  margin: 0.375rem 0 0;
+  color: var(--dash-ink);
+  font-size: clamp(1rem, 1.45vw, 1.375rem);
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.madar-dashboard__legend-dot {
+  display: inline-block;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--madar-navy);
+}
+.madar-dashboard__legend-dot--gold {
+  background: #bd9b5d;
+}
+.madar-dashboard__chart {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  min-width: 0;
+}
+.madar-dashboard__axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  height: 8rem;
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.madar-dashboard__months {
+  gap: clamp(0.125rem, 0.6vw, 0.625rem);
+}
+.madar-dashboard__bars {
+  height: 8rem;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent calc(25% - 1px),
+    #edf0f3 calc(25% - 1px),
+    #edf0f3 25%
+  );
+}
+.madar-dashboard__month-label {
+  min-height: 1.75rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.madar-dashboard__attendance-body {
+  display: grid;
+  gap: 0.75rem;
+}
+.madar-dashboard__attendance-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.madar-dashboard__attendance-row > div {
+  min-width: 0;
+}
+.madar-dashboard__attendance-row p:first-child {
+  font-size: 0.8125rem;
+  color: var(--dash-ink);
+}
+.madar-dashboard__attendance-row p:last-child {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--dash-muted);
+}
+.madar-dashboard__attendance-ring {
+  display: grid;
+  place-items: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.madar-dashboard__attendance-ring > span {
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--madar-navy);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.madar-dashboard__attendance-ring[data-empty="true"] {
+  background: #f1f4f6;
+  border: 1px dashed #cad5de;
+  border-radius: 0.75rem;
+}
+.madar-dashboard__attendance-ring[data-empty="true"] > span {
+  width: auto;
+  height: auto;
+  background: transparent;
+  color: #7890a2;
+}
+.madar-dashboard__attendance-ring svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 1.5;
+}
+.madar-dashboard__attendance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.875rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #edf0f2;
+}
+.madar-dashboard__attendance-actions:empty {
+  display: none;
+}
+.madar-dashboard__attendance-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 0.375rem;
+  min-height: 2rem;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid #dce5eb;
+  border-radius: 0.375rem;
+  color: var(--madar-navy);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.madar-dashboard__attendance-actions a:hover {
+  background: #f2f6f9;
+}
+.madar-dashboard__attendance-actions svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.madar-dashboard__distribution-total {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-bottom: 0.75rem;
+}
+.madar-dashboard__distribution-total strong {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--dash-ink);
+}
+.madar-dashboard__distribution-total > span {
+  font-size: 0.75rem;
+  color: var(--dash-muted);
+}
+.madar-dashboard__distribution li > div:first-child {
+  font-size: 0.75rem;
+}
+.madar-dashboard__distribution li:nth-child(3n + 2) > div:last-child > div {
+  background: #b89c65;
+}
+.madar-dashboard__distribution li:nth-child(3n) > div:last-child > div {
+  background: #6c8ba3;
+}
+
+.madar-dashboard__recent {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.madar-dashboard__recent-row {
+  display: grid;
+  grid-template-columns: 1.875rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 0.625rem;
+  border-bottom: 1px solid #edf0f2;
+}
+.madar-dashboard__recent-row:first-child {
+  padding-top: 0;
+}
+.madar-dashboard__recent-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.madar-dashboard__recent-icon {
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border: 1px solid #e5ecf1;
+  border-radius: 0.5rem;
+  background: #f3f7fa;
+  color: #4c708b;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.madar-dashboard__recent-icon svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+.madar-dashboard__recent-row > span:nth-child(2) > span:first-child {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.madar-dashboard__recent-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125rem 0.5rem;
+  margin-top: 0.25rem;
+  color: var(--dash-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+.madar-dashboard__recent-amount {
+  display: grid;
+  justify-items: end;
+  gap: 0.25rem;
+  max-width: 8rem;
+}
+.madar-dashboard__recent-amount strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--dash-ink);
+  overflow-wrap: anywhere;
+}
+.madar-dashboard__paid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #39715a;
+  font-size: 0.75rem;
+}
+.madar-dashboard__paid svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.madar-dashboard__recent-row > span:last-child:not(.madar-dashboard__recent-amount) {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1279px) {
+  .madar-dashboard__workspace {
+    grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 1fr);
+  }
+  .madar-dashboard__activity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .madar-dashboard__welcome {
+    align-items: start;
+  }
+  .madar-dashboard__welcome-tools {
+    max-width: 50%;
+  }
+  .madar-dashboard__quick {
+    justify-content: end;
+  }
+}
+@media (max-width: 1023px) {
+  .madar-dashboard__alerts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .madar-dashboard__kpi:nth-child(3) {
+    border-inline-start: 0;
+  }
+  .madar-dashboard__kpi:nth-child(n + 3) {
+    border-top: 1px solid var(--dash-line);
+  }
+}
+@media (max-width: 767px) {
+  .madar-dashboard__welcome {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  .madar-dashboard__welcome-tools {
+    width: 100%;
+    max-width: none;
+    justify-items: start;
+    gap: 0.625rem;
+  }
+  .madar-dashboard__quick {
+    width: 100%;
+    justify-content: start;
+  }
+  .madar-dashboard__quick a {
+    flex: 1;
+    padding-inline: 0.5rem;
+    font-size: 0.75rem;
+  }
+  .madar-dashboard__quick a svg:last-child {
+    display: none;
+  }
+  .madar-dashboard__workspace {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "attendance" "finance" "distribution" "activity";
+  }
+  .madar-dashboard__activity {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .madar-dashboard__attendance-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 599px) {
+  .madar-dashboard {
+    gap: 0.875rem;
+  }
+  .madar-dashboard__intro {
+    gap: 0.75rem;
+  }
+  .madar-dashboard__intro h1 {
+    font-size: 1.125rem;
+  }
+  .madar-dashboard__intro .madar-dashboard__eyebrow,
+  .madar-dashboard__intro p {
+    display: none;
+  }
+  .madar-dashboard__intro p {
+    font-size: 0.75rem;
+  }
+  .madar-dashboard__brand-arch {
+    width: 3rem;
+    height: 3.625rem;
+  }
+  .madar-dashboard__brand-arch img {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+  .madar-dashboard__year {
+    gap: 0.5rem;
+  }
+  .madar-dashboard__quick a {
+    flex-basis: calc(50% - 0.5rem);
+    min-height: 2.5rem;
+  }
+  .madar-dashboard__quick a:last-child {
+    flex-basis: 100%;
+  }
+  .madar-dashboard__kpi {
+    min-height: 7.5rem;
+    padding: 0.75rem;
+  }
+  .madar-dashboard__kpi-heading {
+    align-items: start;
+    gap: 0.375rem;
+  }
+  .madar-dashboard__kpi-heading > span {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .madar-dashboard__kpi-heading p {
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+  .madar-dashboard__kpi > p.tnum {
+    font-size: 1.375rem;
+  }
+  .madar-dashboard__kpi-context {
+    font-size: 0.75rem;
+  }
+  .madar-dashboard__alerts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .madar-dashboard__alert {
+    min-height: 5.5rem;
+  }
+  .madar-dashboard__activity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .madar-dashboard__panel {
+    padding: 0.875rem;
+  }
+  .madar-dashboard__attention {
+    padding: 0;
+  }
+  .madar-dashboard__panel-heading {
+    gap: 0.5rem;
+  }
+  .madar-dashboard__panel-title {
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+    gap: 0 0.5rem;
+  }
+  .madar-dashboard__panel-title h2 {
+    font-size: 0.8125rem;
+  }
+  .madar-dashboard__panel-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .madar-dashboard__sparse-finance li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.625rem;
+  }
+  .madar-dashboard__sparse-finance dl {
+    gap: 0.5rem;
+  }
+  .madar-dashboard__sparse-finance dd {
+    font-size: 1.125rem;
+  }
+  .madar-dashboard__attendance-row {
+    gap: 0.5rem;
+  }
+  .madar-dashboard__attendance-ring {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .madar-dashboard__attendance-ring > span {
+    width: 2rem;
+    height: 2rem;
+  }
+  .madar-dashboard__month-label {
+    width: 200%;
+    max-width: none;
+    overflow-wrap: normal;
+  }
+  .madar-dashboard__months > div:nth-child(even) .madar-dashboard__month-label {
+    visibility: hidden;
+  }
+}
+@media (max-width: 359px) {
+  .madar-dashboard__attendance-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

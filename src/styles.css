@@ -1,0 +1,879 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "./styles/dashboard.css";
+@import "./styles/education-pages.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * مدار | Madar design system.
+ * Institutional navy + champagne gold. Gold is an accent only.
+ * All colors use oklch and are exposed as semantic tokens.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --shadow-card:
+    0 1px 2px oklch(0.2795 0.0368 260.03 / 0.06), 0 1px 3px oklch(0.2795 0.0368 260.03 / 0.05);
+  --shadow-panel: 0 8px 24px -12px oklch(0.2795 0.0368 260.03 / 0.22);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --background: oklch(0.985 0.0041 91.45); /* warm white */
+  --foreground: oklch(0.2795 0.0368 260.03); /* main text */
+
+  --card: oklch(1 0 89.88);
+  --card-foreground: oklch(0.2795 0.0368 260.03);
+  --popover: oklch(1 0 89.88);
+  --popover-foreground: oklch(0.2795 0.0368 260.03);
+
+  --primary: oklch(0.3423 0.0752 251.5); /* navy #173A5E */
+  --primary-foreground: oklch(1 0 89.88);
+  --primary-soft: oklch(0.4751 0.094 250.44); /* navy #2F5F8F */
+
+  --secondary: oklch(0.9567 0.0052 247.88); /* light gray */
+  --secondary-foreground: oklch(0.3423 0.0752 251.5);
+
+  --muted: oklch(0.9567 0.0052 247.88);
+  --muted-foreground: oklch(0.5544 0.0407 257.42);
+
+  --accent: oklch(0.9567 0.0052 247.88);
+  --accent-foreground: oklch(0.3423 0.0752 251.5);
+
+  --gold: oklch(0.7722 0.0966 81.73); /* champagne gold */
+  --gold-soft: oklch(0.8733 0.0623 85.42);
+  --gold-foreground: oklch(0.2795 0.0368 260.03);
+
+  --destructive: oklch(0.5441 0.1859 25.95);
+  --destructive-foreground: oklch(1 0 89.88);
+  --success: oklch(0.5532 0.1067 157.99);
+  --success-foreground: oklch(1 0 89.88);
+  --warning: oklch(0.7343 0.1377 80.01);
+  --warning-foreground: oklch(0.2795 0.0368 260.03);
+
+  --border: oklch(0.8988 0.011 256.7);
+  --input: oklch(0.8988 0.011 256.7);
+  --ring: oklch(0.4751 0.094 250.44);
+
+  --sidebar: oklch(0.3423 0.0752 251.5);
+  --sidebar-foreground: oklch(0.93 0.012 250);
+  --sidebar-primary: oklch(0.4052 0.0905 251.07);
+  --sidebar-primary-foreground: oklch(1 0 89.88);
+  --sidebar-accent: oklch(0.4052 0.0905 251.07);
+  --sidebar-accent-foreground: oklch(1 0 89.88);
+  --sidebar-border: oklch(0.4052 0.0905 251.07);
+  --sidebar-ring: oklch(0.7722 0.0966 81.73);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  /* Numbers stay readable in an RTL layout */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Printable areas (receipts, reports): only .print-area is printed */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Additive foundation tokens: existing module tokens remain unchanged. */
+:root {
+  --madar-surface-warm: #faf8f3;
+  --madar-navy: #123b60;
+  --madar-navy-deep: #0b2944;
+  --madar-gold: #d7b575;
+  --madar-text-secondary: #5b7086;
+  --madar-border-soft: #dce3ea;
+  --madar-font-body: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --madar-text-body: 0.9375rem;
+  --madar-text-heading: clamp(1.5rem, 2.3vw, 2rem);
+  --madar-space-1: 0.25rem;
+  --madar-space-2: 0.5rem;
+  --madar-space-3: 0.75rem;
+  --madar-space-4: 1rem;
+  --madar-space-6: 1.5rem;
+  --madar-space-8: 2rem;
+  --madar-space-10: 2.5rem;
+  --madar-radius-control: 0.625rem;
+  --madar-radius-panel: 1.25rem;
+  --madar-shadow-soft: 0 12px 48px -16px rgb(24 45 66 / 16%);
+  --madar-focus: #2f5f8f;
+}
+
+.madar-login {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  min-height: 100dvh;
+  background: var(--madar-surface-warm);
+  color: var(--madar-navy);
+  font-family: var(--madar-font-body);
+  font-size: var(--madar-text-body);
+  line-height: 1.7;
+}
+
+.madar-login__form-panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(1.5rem, 4dvh, 3rem) 2.5rem;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 90% 0%, #fff 0%, transparent 65%);
+}
+
+.madar-login__form-panel::before,
+.madar-login__form-panel::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 21rem;
+  height: 30rem;
+  border: 1.5rem solid rgb(215 181 117 / 12%);
+  border-radius: 55% 55% 12% 12%;
+  transform: rotate(38deg);
+  pointer-events: none;
+}
+
+.madar-login__form-panel::before {
+  inset: auto -10rem -17rem auto;
+}
+.madar-login__form-panel::after {
+  inset: -22rem auto auto -13rem;
+}
+
+.madar-login__card {
+  width: 100%;
+  max-width: 28rem;
+  padding: clamp(1.5rem, 3dvh, 2.25rem) 2.25rem;
+  border: 1px solid rgb(255 255 255 / 90%);
+  border-radius: var(--madar-radius-panel);
+  background: #fff;
+  box-shadow: var(--madar-shadow-soft);
+}
+
+.madar-login__logo {
+  width: min(100%, 17rem);
+  height: auto;
+  margin: 0 auto var(--madar-space-6);
+}
+
+.madar-login__heading {
+  text-align: center;
+}
+.madar-login__heading h1 {
+  font-size: var(--madar-text-heading);
+  font-weight: 600;
+  line-height: 1.5;
+}
+.madar-login__heading p {
+  margin-top: var(--madar-space-2);
+  color: var(--madar-text-secondary);
+  font-size: 0.875rem;
+}
+.madar-login__form {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: var(--madar-space-6);
+}
+.madar-login__form label {
+  color: var(--madar-navy);
+  font-size: 0.8125rem;
+}
+.madar-login__input-wrap {
+  position: relative;
+}
+.madar-login__input {
+  height: 3rem;
+  padding-inline: 2.75rem 1rem;
+  border-color: var(--madar-border-soft);
+  border-radius: var(--madar-radius-control);
+  background: #fff;
+  color: var(--madar-navy-deep);
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgb(18 59 96 / 3%);
+}
+.madar-login__input::placeholder {
+  color: #65798e;
+  opacity: 1;
+}
+.madar-login__input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 1rem;
+  height: 1rem;
+  color: #65798e;
+  pointer-events: none;
+}
+.madar-login__submit {
+  width: 100%;
+  height: 3rem;
+  border: 1px solid #214f74;
+  border-radius: var(--madar-radius-control);
+  background: linear-gradient(110deg, var(--madar-navy-deep), var(--madar-navy));
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgb(18 59 96 / 10%);
+}
+.madar-login__submit:hover {
+  background: var(--madar-navy-deep);
+}
+.madar-login__submit:disabled {
+  opacity: 0.65;
+}
+.madar-login__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--madar-space-4);
+  border-top: 1px solid #edf0f3;
+  padding-top: var(--madar-space-4);
+  font-size: 0.8125rem;
+}
+.madar-login__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--madar-space-2);
+  min-height: 2.75rem;
+  border-radius: 0.25rem;
+  color: var(--madar-navy);
+  text-underline-offset: 0.3em;
+}
+.madar-login__links a:hover {
+  text-decoration: underline;
+}
+.madar-login__links svg {
+  width: 1rem;
+  height: 1rem;
+}
+.madar-login :is(input, button, a):focus-visible {
+  outline: 2px solid var(--madar-focus);
+  outline-offset: 4px;
+  box-shadow: none;
+}
+.madar-login__error {
+  padding: var(--madar-space-3) var(--madar-space-4);
+  border: 1px solid #e9c5c2;
+  border-radius: var(--madar-radius-control);
+  background: #fff5f4;
+  color: #9e3028;
+  font-size: 0.875rem;
+}
+
+.madar-login__hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4dvh, 3rem) clamp(2rem, 4vw, 4.5rem) clamp(1rem, 3dvh, 2rem);
+  background-color: var(--madar-navy-deep);
+  background-image:
+    linear-gradient(
+      180deg,
+      rgb(8 31 54 / 38%) 0%,
+      rgb(8 31 54 / 65%) 36%,
+      rgb(8 31 54 / 12%) 52%,
+      transparent 62%,
+      rgb(8 31 54 / 94%) 100%
+    ),
+    url("/images/madar-login-hero.webp");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  border-inline-start: 1px solid rgb(215 181 117 / 35%);
+}
+.madar-login__arch {
+  position: absolute;
+  z-index: -1;
+  width: 26rem;
+  height: 36rem;
+  top: 10%;
+  left: -17rem;
+  border: 1.5rem solid rgb(215 181 117 / 13%);
+  border-radius: 55% 55% 0 0;
+  transform: rotate(38deg);
+  pointer-events: none;
+}
+.madar-login__hero-top {
+  position: relative;
+  z-index: 1;
+}
+.madar-login__hero-logo {
+  display: block;
+  width: 14rem;
+  height: auto;
+  border-radius: 0.375rem;
+  margin-inline-start: auto;
+}
+.madar-login__value {
+  max-width: 34rem;
+  margin-top: clamp(1.5rem, 3dvh, 2rem);
+  text-align: start;
+}
+.madar-login__gold-rule {
+  display: block;
+  width: 2.25rem;
+  height: 2px;
+  background: var(--madar-gold);
+  margin-bottom: var(--madar-space-4);
+}
+.madar-login__value h2 {
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.75;
+  font-weight: 600;
+}
+.madar-login__value h2 span {
+  color: #edc886;
+}
+.madar-login__value p {
+  margin-top: var(--madar-space-4);
+  max-width: 31rem;
+  font-size: 0.9375rem;
+  line-height: 2;
+  color: #e3ebf2;
+}
+.madar-login__hero-bottom {
+  position: relative;
+  margin-top: clamp(2rem, 12dvh, 8rem);
+}
+.madar-login__features {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--madar-space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.madar-login__features li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--madar-space-3);
+  min-height: 6.5rem;
+  padding: var(--madar-space-3) var(--madar-space-1);
+  border: 1px solid rgb(219 233 246 / 20%);
+  border-radius: 0.75rem;
+  background: rgb(11 41 68 / 88%);
+  text-align: center;
+  font-size: 0.6875rem;
+  line-height: 1.8;
+}
+.madar-login__features svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #edc886;
+  stroke-width: 1.4;
+}
+.madar-login__security {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--madar-space-3);
+  margin-top: var(--madar-space-6);
+  color: #e3ebf2;
+  font-size: 0.6875rem;
+}
+.madar-login__security svg {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #edc886;
+  stroke-width: 1.4;
+}
+
+@media (min-width: 1280px) {
+  .madar-login__form-panel {
+    z-index: 2;
+    padding-inline-start: 3rem;
+    padding-inline-end: 0;
+  }
+  .madar-login__card {
+    margin-inline-end: -2rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .madar-login {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .madar-login__form-panel {
+    min-height: 100dvh;
+    padding: 3rem 1.5rem;
+  }
+  .madar-login__hero {
+    min-height: 42rem;
+    padding: 2.5rem;
+  }
+  .madar-login__hero-logo {
+    display: none;
+  }
+  .madar-login__value {
+    margin-top: 0;
+  }
+  .madar-login__value h2 {
+    font-size: 1.65rem;
+  }
+  .madar-login__hero-bottom {
+    margin-top: 14rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .madar-login__form-panel {
+    padding: 2rem 1rem;
+  }
+  .madar-login__card {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+  .madar-login__logo {
+    margin-bottom: var(--madar-space-6);
+  }
+  .madar-login__heading p {
+    line-height: 1.9;
+  }
+  .madar-login__hero {
+    display: none;
+    background-image: none;
+  }
+  .madar-login__links {
+    column-gap: var(--madar-space-2);
+    font-size: 0.75rem;
+  }
+}
+
+/* Shared school chrome; module content retains its own component styles. */
+.madar-workspace {
+  background: var(--madar-surface-warm);
+}
+.madar-workspace__content {
+  padding-block: 1.5rem;
+}
+.madar-workspace__sidebar {
+  border-color: rgb(215 181 117 / 25%);
+}
+.madar-sidebar {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(165deg, #153f62, var(--madar-navy-deep) 70%);
+  color: #e4ebf2;
+}
+.madar-sidebar::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 19rem;
+  height: 29rem;
+  left: -17rem;
+  bottom: 3%;
+  border: 1rem solid rgb(215 181 117 / 5%);
+  border-radius: 55% 55% 0 0;
+  transform: rotate(35deg);
+}
+.madar-sidebar__brand {
+  min-height: 5rem;
+  padding: 0.75rem;
+  border-color: rgb(255 255 255 / 10%);
+}
+.madar-sidebar__logo {
+  width: 100%;
+  max-width: 11rem;
+  height: auto;
+  border-radius: 0.5rem;
+}
+.madar-sidebar nav {
+  padding: 0.625rem;
+  scrollbar-width: thin;
+  scrollbar-color: #6d8192 transparent;
+}
+.madar-sidebar nav a {
+  min-height: clamp(2rem, 4.8dvh, 2.375rem);
+  padding: 0.375rem 0.75rem;
+  margin-top: 0.1875rem;
+  border-radius: 0.5rem;
+  color: #e4ebf2;
+  font-size: 0.875rem;
+  font-weight: 450;
+}
+.madar-sidebar nav a:first-child {
+  margin-top: 0;
+}
+.madar-sidebar nav a svg {
+  stroke-width: 1.6;
+}
+.madar-sidebar nav a:hover {
+  background: rgb(255 255 255 / 7%);
+  color: #fff;
+}
+.madar-sidebar nav a[aria-current="page"] {
+  background: linear-gradient(90deg, rgb(215 181 117 / 10%), rgb(215 181 117 / 19%));
+  color: #ffe1a9;
+  font-weight: 600;
+  box-shadow: inset -3px 0 0 var(--madar-gold);
+}
+.madar-sidebar nav a[aria-current="page"] svg {
+  color: #edc886;
+}
+.madar-sidebar > div:last-child:not(.madar-sidebar__brand) {
+  border-color: rgb(255 255 255 / 10%);
+  color: #bccbd8;
+}
+.madar-sidebar--collapsed nav a {
+  padding-inline: 0.25rem;
+}
+.madar-sidebar :is(a, button):focus-visible {
+  outline: 2px solid #edc886;
+  outline-offset: -2px;
+}
+.madar-mobile-sidebar {
+  max-width: calc(100vw - 2rem);
+}
+.madar-topbar {
+  min-height: 4.5rem;
+  height: auto;
+  background: rgb(255 255 255 / 97%);
+  border-color: #e7e6e1;
+  box-shadow: 0 3px 14px rgb(18 59 96 / 3%);
+}
+.madar-topbar__title {
+  flex-shrink: 0;
+  max-width: 14rem;
+}
+.madar-topbar__title h2 {
+  color: var(--madar-navy);
+}
+.madar-topbar__title p {
+  margin-top: 0.125rem;
+}
+.madar-search {
+  flex: 1;
+  max-width: 22rem;
+}
+.madar-search input {
+  height: 2.5rem;
+  border-color: #e3e7eb;
+  border-radius: var(--madar-radius-control);
+  background: #fafbfc;
+  box-shadow: none;
+  font-size: 0.8125rem;
+}
+.madar-topbar [role="combobox"] {
+  border-radius: var(--madar-radius-control);
+  border-color: #e3e7eb;
+  background: #fcfcfb;
+  box-shadow: none;
+  color: var(--madar-navy);
+}
+.madar-topbar__account {
+  border-inline-start: 1px solid #e6e9ed;
+  border-radius: 0;
+  padding-inline-start: 0.75rem;
+}
+.madar-notifications,
+.madar-user-menu,
+.madar-search-results,
+.madar-topbar-select {
+  border-color: var(--madar-border-soft);
+  border-radius: 0.875rem;
+  box-shadow: var(--madar-shadow-soft);
+}
+.madar-workspace :is(button, a, input, [role="combobox"]):focus-visible {
+  outline: 2px solid var(--madar-focus);
+  outline-offset: 3px;
+}
+.madar-workspace .madar-sidebar :is(a, button):focus-visible {
+  outline-color: #edc886;
+  outline-offset: -2px;
+}
+
+/* Recovery, requests and password reset share the approved login identity. */
+.madar-auth {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 2rem 1rem;
+  background:
+    radial-gradient(ellipse at top right, #fff, transparent 65%), var(--madar-surface-warm);
+  color: var(--madar-navy);
+}
+.madar-auth::before {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  inset: auto -9rem -14rem auto;
+  width: 25rem;
+  height: 34rem;
+  border: 1.5rem solid rgb(215 181 117 / 10%);
+  border-radius: 55% 55% 0 0;
+  transform: rotate(35deg);
+  clip-path: inset(0 0 12rem 0);
+}
+.madar-auth__card {
+  width: 100%;
+  max-width: 28rem;
+  min-width: 0;
+  padding: 2rem 2.25rem;
+  border: 1px solid #f0eeea;
+  border-radius: var(--madar-radius-panel);
+  background: #fff;
+  box-shadow: var(--madar-shadow-soft);
+}
+.madar-auth__card--wide {
+  max-width: 42rem;
+}
+.madar-auth__logo {
+  display: block;
+  width: min(100%, 17rem);
+  height: auto;
+  margin: 0 auto 1.25rem;
+}
+.madar-auth__heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.madar-auth h1 {
+  color: var(--madar-navy);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+.madar-auth__heading p,
+.madar-auth__confirmation > p {
+  color: var(--madar-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.9;
+  margin-top: 0.5rem;
+}
+.madar-auth__form {
+  display: grid;
+  gap: 1.125rem;
+}
+.madar-auth__form label {
+  display: block;
+  color: var(--madar-navy);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.madar-auth__form :is(input, select) {
+  width: 100%;
+  height: 2.875rem;
+  min-width: 0;
+  border: 1px solid var(--madar-border-soft);
+  border-radius: var(--madar-radius-control);
+  background: #fff;
+  color: var(--madar-navy-deep);
+  padding-inline: 0.875rem;
+  box-shadow: 0 1px 3px rgb(18 59 96 / 3%);
+  font-size: 1rem;
+}
+.madar-auth__form button[type="submit"] {
+  width: 100%;
+  height: 2.875rem;
+  border-radius: var(--madar-radius-control);
+  background: linear-gradient(110deg, var(--madar-navy-deep), var(--madar-navy));
+  color: #fff;
+}
+.madar-auth__form button[type="submit"]:hover {
+  background: var(--madar-navy-deep);
+}
+.madar-auth__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  margin-top: 1rem;
+  border-top: 1px solid #edf0f3;
+  padding-top: 0.75rem;
+  color: var(--madar-navy);
+  font-size: 0.8125rem;
+  text-underline-offset: 0.3em;
+}
+.madar-auth__back:hover {
+  text-decoration: underline;
+}
+.madar-auth :is(input, select, button, a):focus-visible {
+  outline: 2px solid var(--madar-focus);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+.madar-auth__confirmation,
+.madar-auth__message {
+  text-align: center;
+}
+.madar-auth__success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem auto;
+  border: 1px solid #d8e7de;
+  border-radius: 50%;
+  background: #f1f8f4;
+  color: #307052;
+}
+.madar-auth__success-icon svg {
+  width: 1.875rem;
+  height: 1.875rem;
+  stroke-width: 1.5;
+}
+.madar-auth__message {
+  margin-top: 1rem;
+  padding: 0.875rem;
+  border-radius: 0.625rem;
+  background: #f8f9fb;
+  font-size: 0.875rem;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+.madar-auth__error {
+  padding: 0.75rem;
+  border: 1px solid #e9c5c2;
+  border-radius: var(--madar-radius-control);
+  background: #fff5f4;
+  color: #9e3028;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+@media (min-width: 600px) {
+  .madar-auth__request {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .madar-auth__full {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1023px) {
+  .madar-search {
+    order: 5;
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .madar-topbar {
+    padding-block: 0.75rem;
+    row-gap: 0.625rem;
+  }
+}
+@media (max-width: 599px) {
+  .madar-workspace__content {
+    padding: 1rem;
+  }
+  .madar-topbar__title {
+    max-width: 8rem;
+  }
+  .madar-topbar__account {
+    padding-inline-start: 0.5rem;
+  }
+  .madar-auth__card {
+    padding: 1.5rem 1.25rem;
+  }
+  .madar-auth h1 {
+    font-size: 1.25rem;
+  }
+}
